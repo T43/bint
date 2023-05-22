@@ -1,6 +1,15 @@
 package internalTools
 
 import (
+	"errors"
+	"flag"
+	"fmt"
+	"io"
+	"os"
+	"os/exec"
+	"path/filepath"
+	"strings"
+
 	"bint.com/internal/compiler"
 	"bint.com/internal/compilerVars"
 	"bint.com/internal/const/options"
@@ -11,14 +20,6 @@ import (
 	"bint.com/internal/parser"
 	. "bint.com/internal/primitiveLexer"
 	. "bint.com/pkg/serviceTools"
-	"errors"
-	"flag"
-	"fmt"
-	"io"
-	"os"
-	"os/exec"
-	"path/filepath"
-	"strings"
 )
 
 var help = flag.Bool("help", false, "show help")
@@ -41,6 +42,7 @@ var rFlag = flag.Bool("r", false, "translation from b to basm without debug info
 
 var FileToExecute string
 
+// .
 func ParseArgs() (int, string, string, string, error) {
 	var toTranslate int
 	var rootSource string
