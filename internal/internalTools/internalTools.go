@@ -42,7 +42,6 @@ var rFlag = flag.Bool("r", false, "translation from b to basm without debug info
 
 var FileToExecute string
 
-// .
 func ParseArgs() (int, string, string, string, error) {
 	var toTranslate int
 	var rootSource string
